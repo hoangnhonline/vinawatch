@@ -10,8 +10,8 @@ class Fontend {
 
     function __construct() {
 	if($_SERVER['SERVER_NAME']=='dongho.dev'){
-		mysql_connect('localhost', 'root', '') or die("Can't connect to server");
-	        mysql_select_db('vinawatch_dongho') or die("Can't connect database");
+		mysql_connect('localhost', 'root', 'root') or die("Can't connect to server");
+	        mysql_select_db('vinawatch') or die("Can't connect database");
 	}else{
 		mysql_connect('localhost', 'vinawatch_dongho', 'donghodong') or die("Can't connect to server");
             mysql_select_db('vinawatch_dongho') or die("Can't connect database");  

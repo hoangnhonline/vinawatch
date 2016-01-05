@@ -46,6 +46,7 @@ if($status_coupon && strtotime($start_date_coupon) <= time() && strtotime($end_d
 		<link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-thumbs.css">
 		<link rel="stylesheet" type="text/css" href="css/reset.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/theme18.css"/>
+        <link rel="stylesheet" href="css/style-menu-mobi.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -99,32 +100,81 @@ if($status_coupon && strtotime($start_date_coupon) <= time() && strtotime($end_d
 			</div>
 				
 		<![endif]-->
-		<div class="wide_layout">		
-
+		<div class="wide_layout" id="wide_layout">		
+			<!-- Sidebar -->
+			  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+			      <ul class="nav sidebar-nav">
+			          <li class="sidebar-brand">
+			              <a href="#">
+			                 Vinawatch.vn
+			              </a>
+			          </li>
+			          <li>
+			              <a href="#">Đồng hồ Seiko</a>
+			          </li>
+			          <li>
+			              <a href="#">Đồng hồ Titan</a>
+			          </li>
+			          <li>
+			              <a href="#">Đồng hồ Casino</a>
+			          </li>
+			          <li class="dropdown open">
+			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Đồng hồ Titan <span class="caret"></span></a>
+			            <ul class="dropdown-menu" role="menu">
+			              <li> <a title="Dây da nam" href=""> Dây da nam </a> </li>
+			              <li> <a title="Dây da nữ" href=""> Dây da nữ </a> </li>
+			              <li> <a title="Đồng hồ nam" href=""> Đồng hồ nam </a> </li>
+			              <li> <a title="Automatic" href=""> Automatic </a> </li>
+			              <li> <a title="Đồng hồ nữ" href=""> Đồng hồ nữ </a> </li>
+			            </ul>
+			          </li>
+			          <li>
+			              <a href="#">Đồng hồ Op</a>
+			          </li>
+			          <li>
+			              <a href="#">Đồng hồ Citizen</a>
+			          </li>
+			      </ul>
+			  </nav><!-- /#sidebar-wrapper -->
+		 
+	  <div id="page-content-wrapper">
+	  
+	    <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+	      <span class="hamb-top"></span>
+	      <span class="hamb-middle"></span>
+	      <span class="hamb-bottom"></span>
+	    </button>
+	  
 			<header id="header" class="type_6">
 				<?php include "blocks/top-cart.php"; ?>
 				<?php include "blocks/bottom-cart.php"; ?>
-				<div id="main_navigation_wrap">
-
-					<div class="container">
-
-						<div class="row">
-
-							<div class="col-xs-12">
-								<div class="sticky_inner type_2">								
-									<?php include "blocks/nav.php"; ?>
-									<div class="nav_item">
-										<?php include "blocks/main-menu.php"; ?>
-									</div>
-								</div><!--/ .sticky_inner -->
-
-							</div><!--/ [col]-->
-
-						</div><!--/ .row-->
-
-					</div><!--/ .container-->
-
-				</div><!--/ .main_navigation_wrap-->
+				<div class="sticky_initialized" id="main_navigation_wrap">
+			        <div class="container">
+			  
+			              <div class="sticky_inner type_2">
+			                <div class="tit"> <a id="dmsp">Danh mục sản phẩm</a> </div>
+			                <!--/ .nav_item--> 
+			  
+			                <div class="nav_item">
+			                  <nav class="main_navigation">
+			                    <ul class="sub-menu">
+			                      <li class="current"> <a href="http://vinawatch.vn/">Trang chủ</a> </li>
+			                      <li> <a href="http://vinawatch.vn/gioi-thieu.html">Giới thiệu</a> </li>
+			                      <li><a href="http://vinawatch.vn/tin-tuc.html">Tin tức</a></li>
+			                      <li><a href="http://vinawatch.vn/bao-hanh.html">Bảo hành</a></li>
+			                      <li><a href="http://vinawatch.vn/huong-dan-mua-hang.html">Hướng dẫn mua hàng</a></li>
+			                      <li><a href="http://vinawatch.vn/lien-he.html">Liên hệ</a></li>
+			                    </ul>
+			                  </nav>
+			                  <!--/ .main_navigation--> </div>
+			              </div>
+			              <!--/ .sticky_inner --> 
+			          
+			        </div>
+			        <!--/ .container--> 
+			        
+			      </div>
+				
 			</header>			
 			<div class="page_wrapper <?php if($mod ==""){echo 'bg';}?>">
                               
@@ -151,7 +201,7 @@ if($status_coupon && strtotime($start_date_coupon) <= time() && strtotime($end_d
 
 			</div><!--/ .page_wrapper-->			
 			<?php include "blocks/footer.php"; ?>
-				
+				</div><!-- /#page-content-wrapper -->
 
 		</div><!--/ [layout]-->	
 	
@@ -294,7 +344,36 @@ $(document).ready(function() {
         });
     });
 </script>
+<script type="text/javascript">
+// JavaScript Document
 
+$(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();      
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {          
+        overlay.hide();
+        isClosed = false;
+      } else {   
+        overlay.show();
+        isClosed = true;
+      }
+  }
+  
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wide_layout').toggleClass('toggled');
+  });  
+});
+
+
+</script>
 	</body>
       
     <div class="snp-pop-4928 snppopup" id="snppopup-exit" style="display:none;" >

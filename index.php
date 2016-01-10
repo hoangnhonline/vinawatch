@@ -105,35 +105,39 @@ if($status_coupon && strtotime($start_date_coupon) <= time() && strtotime($end_d
 			  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
 			      <ul class="nav sidebar-nav">
 			          <li class="sidebar-brand">
-			              <a href="#">
-			                 Vinawatch.vn
+			              <a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>">
+			                 vinawatch.vn
 			              </a>
 			          </li>
-			          <li>
-			              <a href="#">Đồng hồ Seiko</a>
-			          </li>
-			          <li>
-			              <a href="#">Đồng hồ Titan</a>
-			          </li>
-			          <li>
-			              <a href="#">Đồng hồ Casino</a>
-			          </li>
-			          <li class="dropdown open">
-			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Đồng hồ Titan <span class="caret"></span></a>
+			             <?php 
+						$cateTypeArr = $model->getListCateType();
+						  $i = 0;
+
+						  if(!empty($cateTypeArr)){       
+
+						  foreach($cateTypeArr as $catetype){
+
+						  $i++;
+						  $cate_type_id = $catetype['id'];
+						?>
+			          <li class="dropdown">
+			            <a href="<?php echo $catetype['cate_type_alias'];?>.html" class="dropdown-toggle" data-toggle="dropdown">
+			            	<?php echo $catetype['cate_type_name']; ?>
+			            	<span class="caret"></span></a>
 			            <ul class="dropdown-menu" role="menu">
-			              <li> <a title="Dây da nam" href=""> Dây da nam </a> </li>
-			              <li> <a title="Dây da nữ" href=""> Dây da nữ </a> </li>
-			              <li> <a title="Đồng hồ nam" href=""> Đồng hồ nam </a> </li>
-			              <li> <a title="Automatic" href=""> Automatic </a> </li>
-			              <li> <a title="Đồng hồ nữ" href=""> Đồng hồ nữ </a> </li>
+			            	<?php 
+					        $arrCateBlock = $model->getCateCap1ByCateType($cate_type_id);
+					                if(!empty($arrCateBlock)){
+					                  foreach ($arrCateBlock as $cate) {
+					        ?>
+			              <li> <a title="<?php echo $cate['cate_name']; ?>" href="<?php echo $cate['cate_alias']; ?>.html"> <?php echo $cate['cate_name']; ?> </a> </li>
+			              <?php
+					        }}
+					        ?>
 			            </ul>
 			          </li>
-			          <li>
-			              <a href="#">Đồng hồ Op</a>
-			          </li>
-			          <li>
-			              <a href="#">Đồng hồ Citizen</a>
-			          </li>
+			          <?php }}?> 
+			         
 			      </ul>
 			  </nav><!-- /#sidebar-wrapper -->
 		 
@@ -229,7 +233,7 @@ if($status_coupon && strtotime($start_date_coupon) <= time() && strtotime($end_d
         <script src="js/jquery.izilla.touchMenuHover.min.js"></script>
         <script src="jquery.bxslider.js"></script>
         <script type="text/javascript">
-                var homeSearchAffixDomEle= $.id("home_search_affix");
+                /*var homeSearchAffixDomEle= $.id("home_search_affix");
                 $(function(){
                 $(window).scroll(function(){ $('.ac_results').hide(); });
                 affixOnScrollAction(homeSearchAffixDomEle, 700);
@@ -246,7 +250,7 @@ if($status_coupon && strtotime($start_date_coupon) <= time() && strtotime($end_d
                 $.id('header_search_text').attr('fixed', 1);
                 $.id('header_history_keyword').hide();
                 $.id('header_search').removeClass('header_search').addClass('header_search_fixed');
-                })
+                })*/
                 </script>
 		<script type="text/javascript">
 $(function(){	
@@ -275,7 +279,7 @@ $(function(){
 });
 
 $(document).ready(function() {
-	var s = $("#fixboxsearch");
+	/*var s = $("#fixboxsearch");
 	var pos = s.position();					   
 	$(window).scroll(function() {
 		var windowpos = $(window).scrollTop();
@@ -296,7 +300,7 @@ $(document).ready(function() {
             $('#results').css('left', '5px');	
 		}
 	});
-    
+    */
 });   
 		</script>
 <script type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",21696]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script> 		<!-- Button trigger modal -->

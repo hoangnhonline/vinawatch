@@ -101,8 +101,7 @@ html { height: 100%;}
 
 }
 .sidebar-nav li:first-child a {
-    color: #fff;
-    background-color: #1a1a1a;
+  
 }
 .sidebar-nav li:hover:before,
 .sidebar-nav li.open:hover:before {
@@ -148,6 +147,9 @@ html { height: 100%;}
     border: none;
     background-color: #222;
     box-shadow: none;
+}
+.sidebar-nav .dropdown-menu li{
+  padding-left: 15px !important;
 }
 .dropdown {visibility: visible;}
 /*-------------------------------*/

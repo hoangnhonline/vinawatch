@@ -22,7 +22,7 @@
 		width: 170px;
 	}	
 	.nav_item{
-		width: 330px !important;
+		width: 100% !important;
 	}
 	.open_menu::before{
 		margin-left: 78px !important;
@@ -33,6 +33,9 @@
 	#div_btn_send{
 		padding-left: 0px;
 		margin-top: 5px;
+	}
+	.search input {
+	    width: calc(100% - 159px) !important;
 	}
 
 }

@@ -6665,7 +6665,10 @@ aside .entry_thumb,
 }
 
 .search input {
-  width: calc(100% - 50px);
+    width: calc(100% - 174px);
+}
+#header.type_6 .main_header_row{
+  margin-top: 5px !important;
 }
 
 #open_shopping_cart {

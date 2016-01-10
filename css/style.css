@@ -6655,7 +6655,9 @@ aside .entry_thumb,
 .boxed_layout {
   width: 780px;
 }
-
+.site_settings{
+  margin-left: 30px !important;
+}
 .shop_links {
   margin-bottom: 0px;
 }

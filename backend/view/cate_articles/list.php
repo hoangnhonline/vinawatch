@@ -39,11 +39,11 @@ $arrList = $model->getListCateArticles();
                         $i++;
 
                         ?>
-                        <tr id="row-<?php echo $cate['cate_id']; ?>" >
+                        <tr id="row-<?php echo $cate['id']; ?>" >
                             <td width="1%"><span class="order"><?php echo $i; ?></span></td>
                             <td style="width:1%"><img src="img/drag.png" class="dragHandle" /></td>
                             <td width="30%">
-                                <a href="index.php?mod=cate_articles&act=form&id=<?php echo $cate['cate_id']; ?>">
+                                <a href="index.php?mod=cate_articles&act=form&id=<?php echo $cate['id']; ?>">
                                     <?php echo $cate['cate_name']; ?>
                                 </a>
                                 <?php if($cate['is_hot']==1) { ?>
@@ -55,21 +55,21 @@ $arrList = $model->getListCateArticles();
                                 <img src="<?php echo $url_image; ?>" width="80" />
                             </td>-->                            
                             <td style="width:1%;white-space:nowrap;text-align:center">
-                                <a title="Click để xem bài viết" href="index.php?mod=articles&act=list&cate_id=<?php echo $cate['cate_id']; ?>" >
+                                <a title="Click để xem bài viết" href="index.php?mod=articles&act=list&cate_id=<?php echo $cate['id']; ?>" >
                                     <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                                 </a>
                                    <br /> <span style="color:red;font-weight:bold;font-size:18px"> 
-                                    <?php echo $model->getNumberArticlesByCate($cate['cate_id']); ?> </span>
+                                    <?php echo $model->getNumberArticlesByCate($cate['id']); ?> </span>
                             </td>
                             <td style="text-align:center"><?php echo $cate['hidden'] == 0 ? "<span style='color:blue'>Bật</span>" : "<span style='color:red'>Tắt</span>"; ?></td>
                             <td style="white-space:nowrap;width:1%">
                                  <?php if($model->checkprivilege(36)){ ?>    
-                                <a title="Click để chỉnh sửa" href="index.php?mod=cate_articles&act=form&id=<?php echo $cate['cate_id']; ?>">
+                                <a title="Click để chỉnh sửa" href="index.php?mod=cate_articles&act=form&id=<?php echo $cate['id']; ?>">
                                     <i class="fa fa-fw fa-edit"></i>
                                 </a>
                                 <?php } ?>
                                  <?php if($model->checkprivilege(37)){ ?>
-                                <a title="Click để xóa" href="javascript:;" alias="<?php echo $cate['cate_name']; ?>" id="<?php echo $cate['cate_id']; ?>" mod="article_cate" class="link_delete" >    
+                                <a title="Click để xóa" href="javascript:;" alias="<?php echo $cate['cate_name']; ?>" id="<?php echo $cate['id']; ?>" mod="article_cate" class="link_delete" >    
                                     <i class="fa fa-fw fa-trash-o"></i>
                                 </a>  
                                 <?php } ?>

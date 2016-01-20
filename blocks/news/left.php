@@ -9,7 +9,7 @@
             foreach ($arrCate as $value) {
                 
             ?>
-			<li <?php if($cate_id==$value['cate_id']) echo 'class="current"'; ?>>
+			<li <?php if($cate_id==$value['id']) echo 'class="current"'; ?>>
 				<a href="danh-muc/<?php echo $value['cate_alias'];?>.html" title="<?php echo $value['cate_name']; ?>">
 					<?php echo $value['cate_name']; ?>
 				</a>

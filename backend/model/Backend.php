@@ -7,7 +7,7 @@ class Backend {
 
     function __construct() {
         if($_SERVER['SERVER_NAME']=='dongho.dev'){
-            mysql_connect('localhost', 'root', '') or die("Can't connect to server");
+            mysql_connect('localhost', 'root', 'root') or die("Can't connect to server");
                mysql_select_db('vinawatch_dongho') or die("Can't connect database");
         }else{
 			mysql_connect('localhost', 'vinawatch_dongho', 'donghodong') or die("Can't connect to server");
@@ -1081,7 +1081,7 @@ class Backend {
         return $row['num_cate'];
     }
     function getNumberArticlesByCate($cate_id){
-        $sql ="SELECT count(article_id) as num_article FROM articles WHERE cate_id = $cate_id";
+        $sql ="SELECT count(id) as num_article FROM articles WHERE cate_id = $cate_id";
         $rs = mysql_query($sql) or die(mysql_error().$sql);
         $row = mysql_fetch_assoc($rs);
         return $row['num_article'];
@@ -1720,7 +1720,7 @@ class Backend {
     function getDetailArticle($article_id) {
         $arrReturn = array();
         $str_image = "";
-        $sql = "SELECT * FROM articles WHERE article_id = $article_id";
+        $sql = "SELECT * FROM articles WHERE id = $article_id";
         $rs = mysql_query($sql) or die(mysql_error());
         $row =mysql_fetch_assoc($rs);
         $arrReturn['data']= $row;
@@ -1784,7 +1784,7 @@ class Backend {
                 $denngay = strtotime($denngay);
                 $sql.=" AND updated_at <= $denngay";
             }
-            $sql.="  ORDER BY article_id DESC ";
+            $sql.="  ORDER BY id DESC ";
             if ($limit > 0 && $offset >= 0)
                 $sql .= " LIMIT $offset,$limit";            
             $rs = mysql_query($sql) or die(mysql_error());
@@ -1938,7 +1938,7 @@ class Backend {
         mysql_query($sql) or die(mysql_error()); 
     }
     function updateOrderCateArticles($cate_id, $display_order){
-        $sql = "UPDATE article_cate SET display_order  = $display_order WHERE cate_id = $cate_id";
+        $sql = "UPDATE article_cate SET display_order  = $display_order WHERE id = $cate_id";
         mysql_query($sql) or die(mysql_error()); 
     }
     function getOrderMax($table){

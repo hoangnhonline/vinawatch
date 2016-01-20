@@ -173,7 +173,7 @@ $arrList = $model->getListArticle($keyword,$cate_id,$tungay,$denngay,$hidden,$of
 
                         <td>
 
-                            <a href="index.php?mod=articles&act=form&article_id=<?php echo $row['article_id']; ?>">
+                            <a href="index.php?mod=articles&act=form&article_id=<?php echo $row['id']; ?>">
 
                                 <?php echo $row['article_title']; ?> 
 
@@ -189,14 +189,14 @@ $arrList = $model->getListArticle($keyword,$cate_id,$tungay,$denngay,$hidden,$of
                         <td style="text-align:center"><?php echo $row['hidden'] == 0 ? "<span style='color:blue'>Bật</span>" : "<span style='color:red'>Tắt</span>"; ?></td>
                         <td style="white-space:nowrap">                            
                         <?php if($model->checkprivilege(40)){ ?>
-                            <a title="Click để chỉnh sửa" href="index.php?mod=articles&act=form&article_id=<?php echo $row['article_id']; ?><?php echo $link_form; ?>">
+                            <a title="Click để chỉnh sửa" href="index.php?mod=articles&act=form&article_id=<?php echo $row['id']; ?><?php echo $link_form; ?>">
 
                                 <i class="fa fa-fw fa-edit"></i>
 
                             </a>
                             <?php } ?>
                             <?php if($model->checkprivilege(41)){ ?>
-                            <a title="Click để xóa" href="javascript:;" alias="<?php echo $row['article_title']; ?>" id="<?php echo $row['article_id']; ?>" mod="articles" class="link_delete" >    
+                            <a title="Click để xóa" href="javascript:;" alias="<?php echo $row['article_title']; ?>" id="<?php echo $row['id']; ?>" mod="articles" class="link_delete" >    
 
                                 <i class="fa fa-fw fa-trash-o"></i>
 

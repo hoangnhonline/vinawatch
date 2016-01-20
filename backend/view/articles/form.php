@@ -146,13 +146,13 @@ if (isset($_GET['hidden']) && $_GET['hidden'] > -1) {
                         <input type="text" name="article_alias" id="article_alias" class="form-control required" value="<?php echo isset($data['article_alias'])  ? $data['article_alias'] : "" ?>">
 
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
 
                     <label>Tags</label>                        
 
                     <textarea rows="3" class="form-control" name="tags" id="tags"><?php echo $str_tag; ?></textarea>
 
-                </div>   
+                </div>   -->
                 <div class="form-group">
 
                     <label>Nguồn</label>                        

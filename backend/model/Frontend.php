@@ -10,7 +10,7 @@ class Fontend {
 
     function __construct() {
 	if($_SERVER['SERVER_NAME']=='dongho.dev'){
-		mysql_connect('localhost', 'root', '') or die("Can't connect to server");
+		mysql_connect('localhost', 'root', 'root') or die("Can't connect to server");
 	        mysql_select_db('vinawatch_dongho') or die("Can't connect database");
 	}else{
 		mysql_connect('localhost', 'vinawatch_dongho', 'donghodong') or die("Can't connect to server");
@@ -68,16 +68,16 @@ class Fontend {
         return $row['id'];
     }
     function getCateArticleId($cate_alias){
-        $sql = "SELECT cate_id FROM article_cate WHERE cate_alias = '$cate_alias'";
+        $sql = "SELECT id FROM article_cate WHERE cate_alias = '$cate_alias'";
         $rs = mysql_query($sql);
         $row = mysql_fetch_assoc($rs);
-        return $row['cate_id'];
+        return $row['id'];
     }
     function getArticleId($article_alias){
-        $sql = "SELECT article_id FROM articles WHERE article_alias = '$article_alias'";
+        $sql = "SELECT id FROM articles WHERE article_alias = '$article_alias'";
         $rs = mysql_query($sql);
         $row = mysql_fetch_assoc($rs);
-        return $row['article_id'];
+        return $row['id'];
     }
     function getListStateByCity($city_id){
         $arrReturn = array();
@@ -164,7 +164,7 @@ class Fontend {
     }
     function getListArticles($cate_id=-1, $offset,$limit){
         $arrReturn = array();
-        $sql = "SELECT * FROM articles WHERE hidden = 0 AND (cate_id = $cate_id OR $cate_id = -1) ORDER BY article_id DESC ";
+        $sql = "SELECT * FROM articles WHERE hidden = 0 AND (cate_id = $cate_id OR $cate_id = -1) ORDER BY id DESC ";
         if ($limit > 0 && $offset >= 0)
                 $sql .= " LIMIT $offset,$limit"; 
         $rs = mysql_query($sql);
@@ -176,7 +176,7 @@ class Fontend {
     }
     function getListArticlesNew($limit){
         $arrReturn = array();
-        $sql = "SELECT * FROM articles WHERE hidden = 0 ORDER BY article_id DESC ";
+        $sql = "SELECT * FROM articles WHERE hidden = 0 ORDER BY id DESC ";
         
                 $sql .= " LIMIT 0,$limit"; 
         $rs = mysql_query($sql);
@@ -209,7 +209,7 @@ class Fontend {
     }
     function getDetailCateArticles($cate_id){
         $arrReturn = array();
-        $sql = mysql_query("SELECT * FROM article_cate WHERE cate_id = $cate_id");
+        $sql = mysql_query("SELECT * FROM article_cate WHERE id = $cate_id");
         $arrReturn = mysql_fetch_assoc($sql);        
         return $arrReturn;
     }
@@ -343,7 +343,7 @@ class Fontend {
     }
     function getListArticleByCate($cate_id){
         $arrReturn = array();
-        $sql = "SELECT * FROM articles WHERE cate_id = $cate_id ORDER BY article_id DESC LIMIT 0,7";
+        $sql = "SELECT * FROM articles WHERE cate_id = $cate_id ORDER BY id DESC LIMIT 0,7";
         $rs = mysql_query($sql);
         while($row = mysql_fetch_assoc($rs)){
             $arrReturn[] = $row;
@@ -1082,14 +1082,14 @@ var_dump($date);
         }
     }
     function getDetailArticles($article_id){
-        $sql = "SELECT * FROM articles WHERE article_id = $article_id";
+        $sql = "SELECT * FROM articles WHERE id = $article_id";
         $rs = mysql_query($sql);
         $row = mysql_fetch_assoc($rs);
         return $row;
     }
     function getArticlesRelated($cate_id, $article_id,$offset,$limit){
         $arrReturn = array();
-        $sql = "SELECT article_id,article_title,article_alias,image_url FROM articles WHERE cate_id = $cate_id AND article_id <> $article_id ORDER BY article_id DESC LIMIT $offset,$limit";
+        $sql = "SELECT id,article_title,article_alias,image_url FROM articles WHERE cate_id = $cate_id AND id <> $article_id ORDER BY id DESC LIMIT $offset,$limit";
         $rs = mysql_query($sql);
         while($row = mysql_fetch_assoc($rs)){
             $arrReturn[$row['article_id']] = $row;
@@ -1098,19 +1098,19 @@ var_dump($date);
     }
     function getArticlesNews($limit){
         $arrReturn = array();
-        $sql = "SELECT article_id,article_title,article_alias,image_url FROM articles ORDER BY article_id DESC LIMIT 0,$limit";
+        $sql = "SELECT id,article_title,article_alias,image_url FROM articles ORDER BY id DESC LIMIT 0,$limit";
         $rs = mysql_query($sql);
         while($row = mysql_fetch_assoc($rs)){
-            $arrReturn[$row['article_id']] = $row;
+            $arrReturn[$row['id']] = $row;
         }
         return $arrReturn;
     }
     function getArticlesMostView($offset,$limit){
         $arrReturn = array();
-        $sql = "SELECT article_id,article_title,article_alias,image_url FROM articles WHERE is_hot = 1 ORDER BY RAND() LIMIT $offset,$limit";
+        $sql = "SELECT id,article_title,article_alias,image_url FROM articles WHERE is_hot = 1 ORDER BY RAND() LIMIT $offset,$limit";
         $rs = mysql_query($sql);
         while($row = mysql_fetch_assoc($rs)){
-            $arrReturn[$row['article_id']] = $row;
+            $arrReturn[$row['id']] = $row;
         }
         return $arrReturn;
     }
